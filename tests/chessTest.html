@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>chess tests</title>
+    <script src="../chess.js"></script>
+    <script src="assertion.js"></script>
+    <link rel="stylesheet" href="assertion.css">
+    <link 
+  </head>
+  <body>
+    <script>
+      let board = createStartPosition()
+      let m = parseMove( board, "e4" )
+      assert( "'e4' == m.end" )
+      printResults()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>chess</title>
+    <script src="chess.js"></script>
+    <script src="notation.js"></script>
+    <link rel="stylesheet" href="chess.css">
+  </head>
+  <body>
+    <h1>chess</h1>
+    <table><tr>
+      <td class="boardCell">
+        <span id="board1" style="display: inline;"></span>
+      </td>
+      <td class="boardCell">
+        <span id="board2" style="display: inline;"></span>
+      </td>
+    </tr></table>
+    <script> 
+      let board = createStartPosition()
+      moves( board, 'e2e4 e7e5' )
+      createBoardTable( 'board1', board, true )
+      createBoardTable( 'board2', board, false )
+    </script>
+    <div id="credits">
+      Chess pieces by: <a href="https://en.wikipedia.org/wiki/User:Cburnett">Colin M.L. Burnett</a>
+      Found here: <a href="https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces">Wikipedia</a>
+      License: <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>  
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>notation test</title>
+    <script src="../notation.js"></script>
+    <script src="assertion.js"></script>
+    <link rel="stylesheet" href="assertion.css">
+  </head>
+  </head>
+  <body>
+    <script>
+
+      let notation = new Notation()
+
+      let message = "Simple pawn move"
+
+      assertEquals( '"P"', "notation.parseMove( 'a3' ).piece", message )
+      assertFalse( "notation.parseMove( 'a3' ).shortCastle", message )
+      assertFalse( "notation.parseMove( 'a3' ).longCastle", message )
+      assertFalse( "notation.parseMove( 'a3' ).check", message )
+      assertFalse( "notation.parseMove( 'a3' ).check", message )
+      assertFalse( "notation.parseMove( 'a3' ).mate", message )
+      assertFalse( "notation.parseMove( 'a3' ).capture", message )
+      assertEquals( null, "notation.parseMove( 'a3' ).from", message )
+      assertEquals( '"a3"', "notation.parseMove( 'a3' ).to", message )
+
+      message = "Castle"
+      assertTrue( "notation.parseMove( 'O-O' ).shortCastle", message ) 
+      assertTrue( "notation.parseMove( 'O-O-O' ).longCastle", message ) 
+
+      message = "Checks and Mates"
+      assertTrue( "notation.parseMove( 'a3+' ).check", message  ) 
+      assertFalse( "notation.parseMove( 'a3+' ).mate", message ) 
+      assertTrue( "notation.parseMove( 'a3#' ).mate", message ) 
+      assertFalse( "notation.parseMove( 'a3#' ).check", message ) 
+      assertTrue( "notation.parseMove( 'O-O+' ).check", message ) 
+      assertTrue( "notation.parseMove( 'O-O#' ).mate", message ) 
+      assertTrue( "notation.parseMove( 'O-O-O+' ).check", message ) 
+      assertTrue( "notation.parseMove( 'O-O-O#' ).mate", message ) 
+
+      message = "Fully qualified pawn move"
+      assert( "notation.parseMove( 'd4d5' ).from == 'd4'", message )
+      assert( "notation.parseMove( 'd4d5' ).to == 'd5'", message )
+
+      message = "Rook move"
+      assert( "notation.parseMove( 'Rh8' ).piece == 'R'", message )
+      assert( "!notation.parseMove( 'Rh8' ).from", message )
+      assert( "notation.parseMove( 'Rh8' ).to == 'h8'", message )
+
+      message = "Fully qualified queen move"
+      assert( "notation.parseMove( 'Qa1h8' ).piece == 'Q'", message )
+      assert( "notation.parseMove( 'Qa1h8' ).from == 'a1'", message )
+      assert( "notation.parseMove( 'Qa1h8' ).to == 'h8'", message )
+
+      message = "Fully qualified capture with a knight"
+      assert( "notation.parseMove( 'Nb2xd3' ).piece == 'N'", message )
+      assert( "notation.parseMove( 'Nb2xd3' ).from == 'b2'", message )
+      assert( "notation.parseMove( 'Nb2xd3' ).to == 'd3'", message )
+      assert( "notation.parseMove( 'Nb2xd3' ).capture", message )
+
+      message = "Capture with a pawn"
+      assertEquals( "'P'", "notation.parseMove( 'cxd3' ).piece", message )
+      assertEquals( "'b2'", "notation.parseMove( 'Nb2xd3' ).from", message )
+      assertEquals( "'d3'", "notation.parseMove( 'Nb2xd3' ).to", message )
+      assertTrue( "notation.parseMove( 'Nb2xd3' ).capture", message )
+
+      // show results
+      printResults()
+
+    </script>
+  </body>
+</html>

@@ -22,7 +22,7 @@ function moves( board, moves ) {
 }
 
 function move( board, m ) {
-  let move = parseMove( board, m )
+  let move = parseMove( m )
   // do the moving
 }
 
@@ -94,7 +94,7 @@ function createBoardTable( containerId, board, white ) {
       tr.appendChild( td )
       let img = document.createElement( 'img' )
       //img.setAttribute( 'height', '50px' )
-      let piece = getPiece( board, column, row )
+      let piece = board.getPiece( board, column, row )
       let darkPiece = ''
       if( piece != ' ' ) {
         darkPiece = isDarkPiece( piece ) ? 'd' : 'l'
@@ -111,10 +111,6 @@ function createBoardTable( containerId, board, white ) {
     }
     row += white ? -1 : 1
   }
-}
-
-function getPiece( board, column, row ) {
-  return board[ row - 1 ][ column.charCodeAt() - 'a'.charCodeAt() ]
 }
 
 function charAdd( c, diff ) {

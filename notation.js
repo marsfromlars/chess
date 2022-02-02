@@ -84,3 +84,50 @@ class Move {
 
 }
 
+class Board {
+
+  PIECES_ROW = 'RNBQKBNR'
+  PAWN_ROW = 'PPPPPPPP'
+  EMPTY_ROW = '        '
+
+  board = [
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW,
+    this.EMPTY_ROW
+  ]
+
+  /**
+   * Creates empty board
+   */
+  constructor() {
+  }
+
+  /**
+   * Create the default starting position
+   */
+  resetDefault() {
+
+    this.board = [
+      this.PIECES_ROW,
+      this.PAWN_ROW,
+      this.EMPTY_ROW,
+      this.EMPTY_ROW,
+      this.EMPTY_ROW,
+      this.EMPTY_ROW,
+      this.PAWN_ROW.toLowerCase(),
+      this.PIECES_ROW.toLowerCase()
+    ]
+
+  }
+
+  getPiece( board, column, row ) {
+    return this.board[ row - 1 ][ column.charCodeAt() - 'a'.charCodeAt() ]
+  }
+  
+}
+

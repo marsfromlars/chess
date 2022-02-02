@@ -16,8 +16,12 @@
       </td>
     </tr></table>
     <script> 
+      /*
       let board = createStartPosition()
       moves( board, 'e2e4 e7e5' )
+      */
+      let board = new Board()
+      board.resetDefault()
       createBoardTable( 'board1', board, true )
       createBoardTable( 'board2', board, false )
     </script>
